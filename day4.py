@@ -38,11 +38,11 @@ class BingoCard():
             for i in range(5):
                 allMarked = True
                 for j in range(5):
-                    if not self.board[i][j][1]:
+                    if not self.board[j][i][1]:
                         allMarked = False
                         break
                 if allMarked:
-                    print("BINGO! ( bingo in column",j+1," )")
+                    print("BINGO! ( bingo in column",i+1," )")
                     bingo = True
                     break
         # diagonals
