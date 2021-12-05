@@ -65,8 +65,7 @@ class BingoCard():
         print("-------------")
 
 class BingoGame():
-    def __init__(self, number_of_cards, use_input_file):
-        self.use_input_file = use_input_file
+    def __init__(self, number_of_cards):
         self.drawn_numbers = []
         self.bingo_cards = []
         self.number_of_cards = number_of_cards
@@ -119,22 +118,16 @@ class BingoGame():
         return final_winner
 
     def play(self):
-        if self.use_input_file:
-            print("Reading drawing order...")
-            self.read_drawn_numbers()
-            print("Reading bingo cards...")
-            self.read_cards()
-        else:
-            print("Game started!\nDrawing numbers...")
-            self.draw_numbers()
-            print("Generating bingo cards...")
-            self.generate_cards()
-        print("Playing drawn numbers...")
+        print("Reading drawing order...")
+        self.read_drawn_numbers()
+        print("Reading bingo cards...")
+        self.read_cards()
+
         for number in self.drawn_numbers:
             final_winner = self.draw_number(number)
             if final_winner:
                 break
 
 ## Main ##
-bingo = BingoGame(number_of_cards=10, use_input_file=True)
+bingo = BingoGame(number_of_cards=10)
 bingo.play()
