@@ -14,7 +14,7 @@ Collect stars by solving puzzles. Two puzzles will be made available on each day
 As the submarine drops below the surface of the ocean, it automatically performs a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report (your puzzle input) appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
 
 For example, suppose you had the following report:
-
+```
 199  
 200  
 208  
@@ -25,13 +25,13 @@ For example, suppose you had the following report:
 269  
 260  
 263  
-
+```
 This report indicates that, scanning outward from the submarine, the sonar sweep found depths of 199, 200, 208, 210, and so on.
 
 The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get carried into deeper water by an ocean current or a fish or something.
 
 To do this, count the number of times a depth measurement increases from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
-
+```
 199 (N/A - no previous measurement)  
 200 (increased)  
 208 (increased)  
@@ -42,7 +42,7 @@ To do this, count the number of times a depth measurement increases from the pre
 269 (increased)  
 260 (decreased)  
 263 (increased)  
-
+```
 In this example, there are 7 measurements that are larger than the previous measurement.
 
 How many measurements are larger than the previous measurement?
@@ -51,7 +51,7 @@ How many measurements are larger than the previous measurement?
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
 Instead, consider sums of a three-measurement sliding window. Again considering the above example:
-
+```
 199  A        
 200  A B      
 208  A B C    
@@ -62,13 +62,13 @@ Instead, consider sums of a three-measurement sliding window. Again considering 
 269    F G H  
 260      G H  
 263        H  
-
+```
 Start by comparing the first and second three-measurement windows. The measurements in the first window are marked A (199, 200, 208); their sum is 199 + 200 + 208 = 607. The second window is marked B (200, 208, 210); its sum is 618. The sum of measurements in the second window is larger than the sum of the first, so this first comparison increased.
 
 Your goal now is to count the number of times the sum of measurements in this sliding window increases from the previous sum. So, compare A with B, then compare B with C, then C with D, and so on. Stop when there aren't enough measurements left to create a new three-measurement sum.
 
 In the above example, the sum of each three-measurement window is as follows:
-
+```
 A: 607 (N/A - no previous sum)  
 B: 618 (increased)  
 C: 618 (no change)  
@@ -77,7 +77,7 @@ E: 647 (increased)
 F: 716 (increased)  
 G: 769 (increased)  
 H: 792 (increased)  
-
+```
 In this example, there are 5 sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?
@@ -93,14 +93,14 @@ up X decreases the depth by X units.
 Note that since you're on a submarine, down and up affect your depth, and so they have the opposite result of what you might expect.
 
 The submarine seems to already have a planned course (your puzzle input). You should probably figure out where it's going. For example:
-
+```
 forward 5  
 down 5  
 forward 8  
 up 3  
 down 8  
 forward 2  
-
+```
 Your horizontal position and depth both start at 0. The steps above would then modify them as follows:
 
 forward 5 adds 5 to your horizontal position, a total of 5.  
@@ -145,7 +145,7 @@ The diagnostic report (your puzzle input) consists of a list of binary numbers w
 You need to use the binary numbers in the diagnostic report to generate two new binary numbers (called the gamma rate and the epsilon rate). The power consumption can then be found by multiplying the gamma rate by the epsilon rate.
 
 Each bit in the gamma rate can be determined by finding the most common bit in the corresponding position of all numbers in the diagnostic report. For example, given the following diagnostic report:
-
+```
 00100  
 11110  
 10110  
@@ -158,7 +158,7 @@ Each bit in the gamma rate can be determined by finding the most common bit in t
 11001  
 00010  
 01010  
-
+```
 Considering only the first bit of each number, there are five 0 bits and seven 1 bits. Since the most common bit is 1, the first bit of the gamma rate is 1.
 
 The most common second bit of the numbers in the diagnostic report is 0, so the second bit of the gamma rate is 0.
@@ -211,7 +211,7 @@ Maybe it wants to play bingo?
 Bingo is played on a set of boards each consisting of a 5x5 grid of numbers. Numbers are chosen at random, and the chosen number is marked on all boards on which it appears. (Numbers may not appear on all boards.) If all numbers in any row or any column of a board are marked, that board wins. (Diagonals don't count.)
 
 The submarine has a bingo subsystem to help passengers (currently, you and the giant squid) pass the time. It automatically generates a random order in which to draw numbers and a random set of boards (your puzzle input). For example:
-
+```
 7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1  
 
 22 13 17 11  0  
@@ -231,31 +231,31 @@ The submarine has a bingo subsystem to help passengers (currently, you and the g
 18  8 23 26 20  
 22 11 13  6  5  
  2  0 12  3  7  
- 
+ ```
 After the first five numbers are drawn (7, 4, 9, 5, and 11), there are no winners, but the boards are marked as follows (shown here adjacent to each other to save space):
-
+```
 22 13 17 11  0         3 15  0  2 22        14 21 17 24  4  
  8  2 23  4 24         9 18 13 17  5        10 16 15  9 19  
 21  9 14 16  7        19  8  7 25 23        18  8 23 26 20  
  6 10  3 18  5        20 11 10 24  4        22 11 13  6  5  
  1 12 20 15 19        14 21 16 12  6         2  0 12  3  7  
- 
+ ```
 After the next six numbers are drawn (17, 23, 2, 0, 14, and 21), there are still no winners:
-
+```
 22 13 17 11  0         3 15  0  2 22        14 21 17 24  4  
  8  2 23  4 24         9 18 13 17  5        10 16 15  9 19  
 21  9 14 16  7        19  8  7 25 23        18  8 23 26 20  
  6 10  3 18  5        20 11 10 24  4        22 11 13  6  5  
  1 12 20 15 19        14 21 16 12  6         2  0 12  3  7  
- 
+ ```
 Finally, 24 is drawn:
-
+```
 22 13 17 11  0         3 15  0  2 22        14 21 17 24  4  
  8  2 23  4 24         9 18 13 17  5        10 16 15  9 19  
 21  9 14 16  7        19  8  7 25 23        18  8 23 26 20  
  6 10  3 18  5        20 11 10 24  4        22 11 13  6  5  
  1 12 20 15 19        14 21 16 12  6         2  0 12  3  7  
- 
+ ```
 At this point, the third board wins because it has at least one complete row or column of marked numbers (in this case, the entire top row is marked: 14 21 17 24 4).
 
 The score of the winning board can now be calculated. Start by finding the sum of all unmarked numbers on that board; in this case, the sum is 188. Then, multiply that sum by the number that was just called when the board won, 24, to get the final score, 188 * 24 = 4512.
@@ -275,7 +275,7 @@ Figure out which board will win last. Once it wins, what would its final score b
 You come across a field of hydrothermal vents on the ocean floor! These vents constantly produce large, opaque clouds, so it would be best to avoid them if possible.
 
 They tend to form in lines; the submarine helpfully produces a list of nearby lines of vents (your puzzle input) for you to review. For example:
-
+```
 0,9 -> 5,9  
 8,0 -> 0,8  
 9,4 -> 3,4  
@@ -286,7 +286,7 @@ They tend to form in lines; the submarine helpfully produces a list of nearby li
 3,4 -> 1,4  
 0,0 -> 8,8  
 5,5 -> 8,2  
-
+```
 Each line of vents is given as a line segment in the format x1,y1 -> x2,y2 where x1,y1 are the coordinates of one end the line segment and x2,y2 are the coordinates of the other end. These line segments include the points at both ends. In other words:
 
 An entry like 1,1 -> 1,3 covers points 1,1, 1,2, and 1,3.  
@@ -294,7 +294,7 @@ An entry like 9,7 -> 7,7 covers points 9,7, 8,7, and 7,7.
 For now, only consider horizontal and vertical lines: lines where either x1 = x2 or y1 = y2.  
 
 So, the horizontal and vertical lines from the above list would produce the following diagram:
-
+```
 .......1..  
 ..1....1..  
 ..1....1..  
@@ -305,7 +305,7 @@ So, the horizontal and vertical lines from the above list would produce the foll
 ..........  
 ..........  
 222111....  
-
+```
 In this diagram, the top left corner is 0,0 and the bottom right corner is 9,9. Each position is shown as the number of lines which cover that point or . if no line covers that point. The top-left pair of 1s, for example, comes from 2,2 -> 2,1; the very bottom row is formed by the overlapping lines 0,9 -> 5,9 and 0,9 -> 2,9.
 
 To avoid the most dangerous areas, you need to determine the number of points where at least two lines overlap. In the above example, this is anywhere in the diagram with a 2 or larger - a total of 5 points.
@@ -321,7 +321,7 @@ An entry like 1,1 -> 3,3 covers points 1,1, 2,2, and 3,3.
 An entry like 9,7 -> 7,9 covers points 9,7, 8,8, and 7,9.  
 
 Considering all lines from the above example would now produce the following diagram:
-
+```
 1.1....11.  
 .111...2..  
 ..2.1.111.  
@@ -332,7 +332,7 @@ Considering all lines from the above example would now produce the following dia
 .1.....1..  
 1.......1.  
 222111....  
-
+```
 You still need to determine the number of points where at least two lines overlap. In the above example, this is still anywhere in the diagram with a 2 or larger - now a total of 12 points.
 
 Consider all of the lines. At how many points do at least two lines overlap?
@@ -361,7 +361,7 @@ Realizing what you're trying to do, the submarine automatically produces a list 
 
 3,4,3,1,2  
 This list means that the first fish has an internal timer of 3, the second fish has an internal timer of 4, and so on until the fifth fish, which has an internal timer of 2.   Simulating these fish over several days would proceed as follows:
-
+```
 Initial state: 3,4,3,1,2  
 After  1 day:  2,3,2,0,1  
 After  2 days: 1,2,1,6,0,8  
@@ -381,7 +381,7 @@ After 15 days: 2,3,2,0,1,2,3,4,4,5,2,3,4,4,4,5,5,6,6,7
 After 16 days: 1,2,1,6,0,1,2,3,3,4,1,2,3,3,3,4,4,5,5,6,8  
 After 17 days: 0,1,0,5,6,0,1,2,2,3,0,1,2,2,2,3,3,4,4,5,7,8  
 After 18 days: 6,0,6,4,5,6,0,1,1,2,6,0,1,1,1,2,2,3,3,4,6,7,8,8,8,8  
-
+```
 Each day, a 0 becomes a 6 and adds a new 8 to the end of the list, while each other number decreases by 1 if it was present at the start of the day.
 
 In this example, after 18 days, there are a total of 26 fish. After 80 days, there would be a total of 5934.
