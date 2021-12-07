@@ -15,16 +15,16 @@ As the submarine drops below the surface of the ocean, it automatically performs
 
 For example, suppose you had the following report:
 
-199
-200
-208
-210
-200
-207
-240
-269
-260
-263
+199  
+200  
+208  
+210  
+200  
+207  
+240  
+269  
+260  
+263  
 This report indicates that, scanning outward from the submarine, the sonar sweep found depths of 199, 200, 208, 210, and so on.
 
 The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get carried into deeper water by an ocean current or a fish or something.
