@@ -1,4 +1,4 @@
-# My solutions to a few problems of the Advent of Code challenge 2021
+# My solutions to the Advent of Code challenge 2021
 All solutions are in python.
 All puzzles come from : https://adventofcode.com/2021
 
